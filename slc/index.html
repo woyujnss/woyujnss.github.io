@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>shelf life calc - power by vbox007!</title>
+	<style>
+		table {
+			color: #333333;
+			border-width: 1px;
+			border-color: #666666;
+			border-collapse: collapse;
+		}
+
+		table th {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #666666;
+			background-color: #ededed;
+		}
+
+		table td {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #666666;
+			background-color: #ffffff;
+		}
+	</style>
+</head>
+
+<body>
+	<table style="text-align: center;">
+		<thead>
+			<tr>
+				<th colspan="2">
+					本页面计算原则：
+				</th>
+			</tr>
+			<tr>
+				<th>
+					保质期范围
+				</th>
+				<th>
+					临期标准
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					3天&lt;保质期&lt;10天
+				</td>
+				<td>
+					剩余2天
+				</td>
+			</tr>
+			<tr>
+				<td>
+					10天≤保质期&lt;30天
+				</td>
+				<td>
+					剩余5天
+				</td>
+			</tr>
+			<tr>
+				<td>
+					30天≤保质期&lt;90天
+				</td>
+				<td>
+					剩余10天
+				</td>
+			</tr>
+			<tr>
+				<td>
+					90天≤保质期&lt;6个月
+				</td>
+				<td>
+					剩余20天
+				</td>
+			</tr>
+			<tr>
+				<td>
+					6个月≤保质期&lt;12个月
+				</td>
+				<td>
+					剩余30天
+				</td>
+			</tr>
+			<tr>
+				<td>
+					12个月≤保质期
+				</td>
+				<td>
+					剩余45天
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+    生产日期：
+    <input id="mfgd" type="date"/>
+    <br>
+    manufacturing date(mfg. date)
+    <br><br>
+    保质期：
+    <input id='sli' type="number" style="width: 64px;"/>
+    <input type="radio" name="sldmy" id='sld' checked/>
+    <label for="sld">天</label>
+    <input type="radio" name="sldmy" id='slm'/>
+    <label for="slm">月</label>
+    <input type="radio" name="sldmy" id='sly'/>
+    <label for="sly">年</label>
+    <br>
+    shelf life
+    <br><br>
+    失效日期：<span id="expd" style="border-width: 1px;border-style: inset;background: white;">等待输入...</span>
+    <br>
+    expiry date(exp. date):
+    <br><br>
+    结果输出：
+    <br>
+    <textarea id="opta" rows="10" cols="30"></textarea>
+	<script src="./slc.js" type="text/javascript">
+	</script>
+</body>
+
+</html>
