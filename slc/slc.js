@@ -3,10 +3,10 @@ const $ = function (d) {
 }
 const mfgd = $('mfgd'), sli = $('sli');
 const sld = $('sld'), slm = $('slm'), sly = $('sly');
-const expd = $('expd'), opta = $('opta');
+const dnode = $('dnode'), opta = $('opta');
 const slcalc = function () {
     if (!mfgd.valueAsDate || sli.value <= 0) {
-        expd.innerHTML = '等待输入...';
+        dnode.innerHTML = '等待输入...';
         opta.value = '';
         return;
     }
@@ -18,14 +18,14 @@ const slcalc = function () {
     } else {
         expdate.setFullYear(expdate.getFullYear() - -sli.value);
     }
-    expd.innerHTML = expdate.getFullYear() + '/' + (expdate.getMonth() + 1) + '/' + expdate.getDate();
+    dnode.innerHTML = expdate.getFullYear() + '/' + (expdate.getMonth() + 1) + '/' + expdate.getDate();
     const todayd = new Date();
     if (todayd.valueOf() > expdate.valueOf()) {
         opta.value = '于' + mfgd.valueAsDate.getFullYear() + '/' +
             (mfgd.valueAsDate.getMonth() + 1) + '/' +
             mfgd.valueAsDate.getDate() + '生产，' +
-            expd.innerHTML + '时已过期！';
-        return;
+            dnode.innerHTML + '时已过期！';
+        // return;
     }
     let standardDays = 45;
     let slUnit = '年';
@@ -58,7 +58,9 @@ const slcalc = function () {
     daysRemaining /= 60;
     daysRemaining /= 24;
     daysRemaining >>= 0;
-    if (standardDays > daysRemaining) {
+
+    if (todayd.valueOf() > expdate.valueOf()) {
+    } else if (standardDays > daysRemaining) {
         opta.value = '已临期，' + mfgd.valueAsDate.getFullYear() + '/' +
             (mfgd.valueAsDate.getMonth() + 1) + '/' +
             mfgd.valueAsDate.getDate() + '生产，保质期' +
@@ -68,7 +70,12 @@ const slcalc = function () {
         opta.value = '未过期或临期（临期标准为剩余' + standardDays +
             '天以下，商品保质期还剩余' + daysRemaining + '天）';
     }
+    expdate.setDate(todayd.getDate() - standardDays);
+    dnode.innerHTML = '于' + dnode.innerHTML + '过期，' +
+        expdate.getFullYear() + '/' + (expdate.getMonth() + 1) + '/' + expdate.getDate()
+        + '进入临期。';
 };
+
 mfgd.addEventListener('input', (ev) => {
     slcalc();
 });
