@@ -2,13 +2,30 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <title>woyujnss的前端小玩具</title>
     <style type="text/css">
+        body {margin: 0;}
+        ul {list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #f3f3f3; position: fixed; top: 0; width: 100%;}
+        li {float: left;}
+        li a {display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none;}
+        li a:hover:not(.active) {background-color: #6ccf70;}
+        li a.active {color: white; background-color: #217000;}
+        #fcenter {width: 100%; overflow: auto; margin: 0 auto; margin-top: 52px;}
+        iframe {border: none; width: 100%; height: 100%; display: block;}
+        table {min-height: 25px; line-height: 16px; border-collapse: collapse; margin-bottom: 0;}
+        .footer {display: inline; position: absolute; bottom: 0; width: 100%; height: 52px; background-color: #ffc0cb;}
     </style>
 </head>
 <body>
-    <p><a href="./vcpyq/">朋友圈九宫格拼图小工具</a></p>
-    <p><a href="./slc/">一个用来计算商品保质期用的玩意</a></p>
+    <div>
+        <ul id="topnav">
+            <li><a href="javascript:;" id="whome" title="homepage">首页</a></li>
+            <li style="float:right"><a href="javascript:;" id="wabout" title="aboutpage">关于</a></li>
+       </ul>
+    </div>
+    <div id="fcenter"><iframe></iframe></div>
+    <script src="navbar.js"></script>
+    <script src="addnavbar.js"></script>
 </body>
 </html>
