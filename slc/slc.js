@@ -2,7 +2,7 @@ const $ = function (d) {
     return document.getElementById(d);
 }
 const mfgd = $('mfgd'), sli = $('sli');
-const sld = $('sld'), slm = $('slm'), sly = $('sly');
+const sld = $('sld'), slm = $('slm'), sly = $('sly'), slw = $('slw');
 const dnode = $('dnode'), opta = $('opta');
 const slcalc = function () {
     if (!mfgd.valueAsDate || sli.value <= 0) {
@@ -15,18 +15,13 @@ const slcalc = function () {
         expdate.setDate(expdate.getDate() - -sli.value);
     } else if (slm.checked) {
         expdate.setMonth(expdate.getMonth() - -sli.value);
-    } else {
+    } else if (sly.checked) {
         expdate.setFullYear(expdate.getFullYear() - -sli.value);
+    } else {
+        expdate.setDate(expdate.getDate() - -sli.value * 7);
     }
     dnode.innerHTML = expdate.getFullYear() + '/' + (expdate.getMonth() + 1) + '/' + expdate.getDate();
     const todayd = new Date();
-    if (todayd.valueOf() > expdate.valueOf()) {
-        opta.value = '于' + mfgd.valueAsDate.getFullYear() + '/' +
-            (mfgd.valueAsDate.getMonth() + 1) + '/' +
-            mfgd.valueAsDate.getDate() + '生产，' +
-            dnode.innerHTML + '时已过期！';
-        // return;
-    }
     let standardDays = 45;
     let slUnit = '年';
     if (sld.checked) {
@@ -51,6 +46,20 @@ const slcalc = function () {
         } else if (sli.value < 12) {
             standardDays = 30;
         }
+    } else if (slw.checked) {
+        slUnit = '周';
+        let tsld = sli.value * 7;
+        if (tsld < 10) {
+            standardDays = 2;
+        } else if (tsld < 30) {
+            standardDays = 5;
+        } else if (tsld < 90) {
+            standardDays = 10;
+        } else if (tsld < 180) {
+            standardDays = 20;
+        } else if (tsld < 360) {
+            standardDays = 30;
+        }
     }
     let daysRemaining = expdate.valueOf() - todayd.valueOf();
     daysRemaining /= 1000;
@@ -60,12 +69,18 @@ const slcalc = function () {
     daysRemaining >>= 0;
 
     if (todayd.valueOf() > expdate.valueOf()) {
+        opta.value = '于' + mfgd.valueAsDate.getFullYear() + '/' +
+            (mfgd.valueAsDate.getMonth() + 1) + '/' +
+            mfgd.valueAsDate.getDate() + '生产，保质期' +
+            sli.value + (slUnit == '月' ? '个月' : slUnit) + '，' +
+            dnode.innerHTML + '时已过期！';
     } else if (standardDays > daysRemaining) {
         opta.value = '已临期，' + mfgd.valueAsDate.getFullYear() + '/' +
             (mfgd.valueAsDate.getMonth() + 1) + '/' +
             mfgd.valueAsDate.getDate() + '生产，保质期' +
-            sli.value + slUnit + '，剩余' +
-            daysRemaining + '天。';
+            sli.value + (slUnit == '月' ? '个月' : slUnit) + '，剩余' +
+            daysRemaining + '天。（临期标准为剩余' + standardDays +
+            '天以下）';
     } else {
         opta.value = '未过期或临期（临期标准为剩余' + standardDays +
             '天以下，商品保质期还剩余' + daysRemaining + '天）';
@@ -96,5 +111,8 @@ slm.addEventListener('change', (ev) => {
     slcalc();
 });
 sld.addEventListener('change', (ev) => {
+    slcalc();
+});
+slw.addEventListener('change', (ev) => {
     slcalc();
 });
