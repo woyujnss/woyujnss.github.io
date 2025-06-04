@@ -27,7 +27,7 @@
             wcFn();
         } else if (isAlipay() || isAlipayObj() || isAlipayFeature()) {
             alFn();
-        } else if (navigator.userAgent.toLowerCase().indexOf('qq/')) {
+        } else if (navigator.userAgent.toLowerCase().indexOf('qq/') !== -1) {
             qqFn();
         } else {
             otFn();
