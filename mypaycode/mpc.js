@@ -33,11 +33,11 @@
     }
     document.write(navigator.userAgent.toLowerCase());
     detectBrowserComprehensive(() => {
-        // location.replace('https://payapp.wechatpay.cn/sjt/qr/AQFekM36zmmtZocQSXpRh2PR');
-        location.replace('wxp://f2f0Sc8TdE9JeO-zg0ZTvjTN9EfYVrlEp6lCzFlb2Q9gq1vL2Gpfsg-moHzQ0nbSGK0y');
+        location.replace('https://payapp.wechatpay.cn/sjt/qr/AQFekM36zmmtZocQSXpRh2PR');
+        // location.replace('wxp://f2f0Sc8TdE9JeO-zg0ZTvjTN9EfYVrlEp6lCzFlb2Q9gq1vL2Gpfsg-moHzQ0nbSGK0y');
     }, () => {
         location.replace('https://qr.alipay.com/tsx18738qu1ut53gqafni8f');
     }, () => {
-        // document.write(navigator.userAgent.toLowerCase());
+        document.write('\n我艹？？？');
     });
 }
