@@ -41,7 +41,8 @@
         location.href = 'https://qr.alipay.com/tsx18738qu1ut53gqafni8f';
         // location.replace('https://qr.alipay.com/tsx18738qu1ut53gqafni8f');
     }, () => {
-        location.href = 'https://i.qianbao.qq.com/wallet/sqrcode.htm?m=tenpay&f=wallet&a=1&u=479434&n=J-thirteen&ac=CAEQyqEdGP2VgsIGMhjmtYHliqjmkYrkvY3nu4_okKXmlLbmrL44AUIgYTRjYWZjNjJiOTNkOTNjYWVlZmE1ZjU3YWEzMDI4ZmU%3D_xxx_sign';
+        // location.href = 'https://i.qianbao.qq.com/wallet/sqrcode.htm?m=tenpay&f=wallet&a=1&u=479434&n=J-thirteen&ac=CAEQyqEdGP2VgsIGMhjmtYHliqjmkYrkvY3nu4_okKXmlLbmrL44AUIgYTRjYWZjNjJiOTNkOTNjYWVlZmE1ZjU3YWEzMDI4ZmU%3D_xxx_sign';
+        document.write('神特么QQ\n');
     }, () => {
         document.write('我艹？？？\n');
     });
