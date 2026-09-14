@@ -2,7 +2,7 @@ const $ = function (d) {
     return document.getElementById(d);
 }
 const nowdis = $('nowdis'), hourLeft = $('hourLeft'), minLeft = $('minLeft');
-const nortime = $('nortime'), norh = $('norh'), norm = $('norm');
+// const nortime = $('nortime'), norh = $('norh'), norm = $('norm');
 const tds = [
     $('td30s'), $('td2m'), $('td5m'), $('td20m'),
     $('td1h'), $('td8h'), $('td16h'), $('td32h')
@@ -52,9 +52,9 @@ const calcTime = () => {
     // 前面是分钟，所以要乘成毫秒数再乘0.8得出成熟时间 60*1000*0.8 = 48000ms
     {
         const dt = disTime(ams);
-        nortime.innerText = dt[0];
-        norh.innerText = dt[1];
-        norm.innerText = dt[2];
+        // nortime.innerText = dt[0];
+        // norh.innerText = dt[1];
+        // norm.innerText = dt[2];
         // 先让下面的时间和上面显示的一样，后面有计算结果再改变显示
         calctime.innerText = dt[0];
         calch.innerText = dt[1];

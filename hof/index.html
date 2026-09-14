@@ -7,12 +7,13 @@
 </head>
 
 <body>
-    当前日期时间：<span id="nowdis">2026-9-14 20:26</span>
+	当前日期时间：<span id="nowdis">2026-9-14 20:26</span>
     <br><br>
     作物多久后成熟：
     <input id='hourLeft' type="number" value="0" style="width: 32px;"/>小时
     <input id='minLeft' type="number" value="0" style="width: 32px;"/>分钟
     <br><br>
+    <!--
     <div style="width: 296px;border-width: 1px;border-style: inset;background: white;">
         正常保证作物没有缺水的情况下：
         <br>
@@ -21,6 +22,7 @@
         （<span id="norh">0</span>小时<span id="norm">0</span>分钟后。）
     </div>
     <br><br>
+    -->
     种子收获时间：
     <br>
     <!--
@@ -36,15 +38,15 @@
     -->
     <input type="radio" name="totalDuration" id="td1h"/>
     <label for="td1h">1小时</label>
-    <input type="radio" name="totalDuration" id="td8h" checked/>
+    <input type="radio" name="totalDuration" id="td8h"/>
     <label for="td8h">8小时</label>
-    <input type="radio" name="totalDuration" id="td16h"/>
+    <input type="radio" name="totalDuration" id="td16h" checked/>
     <label for="td16h">16小时</label>
     <input type="radio" name="totalDuration" id="td32h"/>
     <label for="td32h">32小时</label>
     <br><br>
     水分还能维持：
-    <input id='moistureh' type="number" value="0" style="width: 32px;"/>小时
+    <input id='moistureh' type="number" value="12" style="width: 32px;"/>小时
     <input id='moisturem' type="number" value="0" style="width: 32px;"/>分钟
     <br><br>
     <div style="width: 296px;border-width: 1px;border-style: inset;background: white;">
