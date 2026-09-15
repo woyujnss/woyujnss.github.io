@@ -1,7 +1,9 @@
 const $ = function (d) {
     return document.getElementById(d);
 }
-const nowdis = $('nowdis'), hourLeft = $('hourLeft'), minLeft = $('minLeft');
+const nowdis = $('nowdis');
+const hourLeft = $('hourLeft'), minLeft = $('minLeft');
+const rangehl = $('rangehl'), rangeml = $('rangeml');
 // const nortime = $('nortime'), norh = $('norh'), norm = $('norm');
 const tds = [
     $('td30s'), $('td2m'), $('td5m'), $('td20m'),
@@ -12,6 +14,7 @@ const tdt = [
     1200000, 9600000, 19200000, 38400000
 ]; // 浇水能维持的总时长是种植时长的1/6
 const moistureh = $('moistureh'), moisturem = $('moisturem');
+const rangemh = $('rangemh'), rangemm = $('rangemm');
 const calctime = $('calctime'), calch = $('calch'), calcm = $('calcm');
 
 const calcTime = () => {
@@ -73,7 +76,7 @@ const calcTime = () => {
         cms *= 60000; // 水分维持时长转为毫秒
         if (cms > mms) return; // 如果输入的时长比总共的时间还长就直接返回
         mms -= cms;
-        mms = ~~(mms * 0.25);
+        mms = ~~(mms * 0.25 * 0.8);
         mms = ams - mms;
         if (mms < 0) mms = 0;
         const dt = disTime(mms);
@@ -89,4 +92,25 @@ const calcTime = () => {
     }
     setTimeout(calcTime, 500);
 };
+{
+    rangehl.related = hourLeft;
+    rangeml.related = minLeft;
+    rangemh.related = moistureh;
+    rangemm.related = moisturem;
+    hourLeft.related = rangehl;
+    minLeft.related = rangeml;
+    moistureh.related = rangemh;
+    moisturem.related = rangemm;
+    const inputPointChange = (ev) => {
+        ev.target.related.value = ev.target.value;
+    };
+    rangehl.addEventListener('input', inputPointChange);
+    rangeml.addEventListener('input', inputPointChange);
+    rangemh.addEventListener('input', inputPointChange);
+    rangemm.addEventListener('input', inputPointChange);
+    hourLeft.addEventListener('input', inputPointChange);
+    minLeft.addEventListener('input', inputPointChange);
+    moistureh.addEventListener('input', inputPointChange);
+    moisturem.addEventListener('input', inputPointChange);
+} // 关联一下输入框和滑动条
 calcTime();

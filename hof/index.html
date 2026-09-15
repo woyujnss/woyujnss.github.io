@@ -10,8 +10,12 @@
 	当前日期时间：<span id="nowdis">2026-9-14 20:26</span>
     <br><br>
     作物多久后成熟：
-    <input id='hourLeft' type="number" value="0" style="width: 32px;"/>小时
-    <input id='minLeft' type="number" value="0" style="width: 32px;"/>分钟
+    <input id='hourLeft' type="number" min="0" max="31" value="0" style="width: 32px;"/>小时
+    <input id='minLeft' type="number" min="0" max="59" value="0" style="width: 32px;"/>分钟
+    <br>
+    小时<input type="range" id="rangehl" min="0" max="31" value="0" style="width:280px"/>
+    <br>
+    分钟<input type="range" id="rangeml" min="0" max="59" value="0" style="width:280px"/>
     <br><br>
     <!--
     <div style="width: 296px;border-width: 1px;border-style: inset;background: white;">
@@ -46,8 +50,12 @@
     <label for="td32h">32小时</label>
     <br><br>
     水分还能维持：
-    <input id='moistureh' type="number" value="12" style="width: 32px;"/>小时
-    <input id='moisturem' type="number" value="0" style="width: 32px;"/>分钟
+    <input id='moistureh' type="number" min="0" max="10" value="10" style="width: 32px;"/>小时
+    <input id='moisturem' type="number" min="0" max="59" value="40" style="width: 32px;"/>分钟
+    <br>
+    小时<input type="range" id="rangemh" min="0" max="10" value="10" style="width:280px"/>
+    <br>
+    分钟<input type="range" id="rangemm" min="0" max="59" value="40" style="width:280px"/>
     <br><br>
     <div style="width: 296px;border-width: 1px;border-style: inset;background: white;">
         正常保证作物没有缺水的情况下：
